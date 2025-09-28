@@ -1,8 +1,9 @@
-FROM jekyll/jekyll:4.2.0
+FROM bertold/jekyll:4.4.1
 
-RUN apk update && \
-    apk add python3 && \
-    pip3 install awscli
+RUN apt-get update && \
+    apt-get install -y awscli && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
     
 ADD entrypoint.sh /entrypoint.sh
 
